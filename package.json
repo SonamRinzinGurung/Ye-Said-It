@@ -2,8 +2,12 @@
   "name": "ye-quote-guesser",
   "version": "1.0.0",
   "description": "Guess if the quote was said by Ye (Kanye)",
-  "main": "server.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
+    "server": "nodemon app --ignore client",
+    "client": "npm start --prefix client",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -11,5 +15,15 @@
     "Yezzy"
   ],
   "author": "Lova",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-async-error": "^0.0.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.20"
+  }
 }
