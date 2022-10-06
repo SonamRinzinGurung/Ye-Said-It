@@ -1,11 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import { checkQuote, getQuote } from "../features/quoteSlice";
+import { CorrectAnswer, WrongAnswer } from "./FeedBack";
 
 const Quote = () => {
   const dispatch = useDispatch();
-  const { quote } = useSelector((store) => store.quote);
+  const { quote, score, isCorrect } = useSelector((store) => store.quote);
   return (
     <>
+      <div className="score">Score: {score}</div>
+      {isCorrect && isCorrect && <CorrectAnswer />}
+      {isCorrect !== null && isCorrect === false && <WrongAnswer />}
+
       <div>Quote:</div>
       <p>{quote}</p>
       <span>-Ye</span>
@@ -13,7 +18,7 @@ const Quote = () => {
       <button
         onClick={() => {
           dispatch(checkQuote({ quote, choice: true }));
-          dispatch(getQuote());
+          // dispatch(getQuote());
         }}
       >
         Ye Said it
@@ -21,7 +26,7 @@ const Quote = () => {
       <button
         onClick={() => {
           dispatch(checkQuote({ quote, choice: false }));
-          dispatch(getQuote());
+          // dispatch(getQuote());
         }}
       >
         He ain't said it

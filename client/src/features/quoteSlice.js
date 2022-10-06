@@ -7,7 +7,7 @@ export const getQuote = createAsyncThunk("getQuote", async (arg, thunkAPI) => {
       "http://localhost:3000/api/v1/ye-said/getQuote"
     );
 
-    return data.quote;
+    return await data.quote;
   } catch (error) {
     console.log(error);
     return thunkAPI.rejectWithValue("error ocurred...");
@@ -22,6 +22,8 @@ export const checkQuote = createAsyncThunk(
         `http://localhost:3000/api/v1/ye-said/checkQuote/${quote}`
       );
       const result = { answer: data.result, choice };
+      thunkAPI.dispatch(getQuote());
+      setTimeout(() => thunkAPI.dispatch(clearMessage()), 2000);
       return result;
     } catch (error) {}
   }
@@ -29,8 +31,12 @@ export const checkQuote = createAsyncThunk(
 
 const quoteSlice = createSlice({
   name: "quote",
-  initialState: { quote: "", isCorrect: false, score: 0, isLoading: false },
-  reducers: {},
+  initialState: { quote: "", isCorrect: null, score: 0, isLoading: false },
+  reducers: {
+    clearMessage: (state) => {
+      state.isCorrect = null;
+    },
+  },
   extraReducers: {
     [getQuote.pending]: (state) => {
       state.isLoading = true;
@@ -50,10 +56,12 @@ const quoteSlice = createSlice({
       state.isLoading = false;
       if (payload.answer === payload.choice) {
         state.score = state.score + 1;
+        state.isCorrect = true;
       } else if (payload.answer !== payload.choice && state.score >= 1) {
         state.score = state.score - 1;
+        state.isCorrect = false;
       } else {
-        console.log("no points to spare");
+        state.isCorrect = false;
       }
     },
 
@@ -61,5 +69,5 @@ const quoteSlice = createSlice({
   },
 });
 
-// export const { incorrect, correctQuote } = quoteSlice.actions;
+export const { clearMessage } = quoteSlice.actions;
 export default quoteSlice.reducer;
