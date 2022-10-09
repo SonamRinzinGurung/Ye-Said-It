@@ -7,12 +7,17 @@ import {
   realQuoteJson,
 } from "../quotes/readQuote.js";
 
-router.get("/getQuote", async (req, res) => {
-  const singleQuote = await quoteJson[
-    Math.floor(Math.random() * quoteJson.length)
-  ];
+// router.get("/getQuote", async (req, res) => {
+//   const singleQuote = await quoteJson[
+//     Math.floor(Math.random() * quoteJson.length)
+//   ];
 
-  res.json({ quote: singleQuote });
+//   res.json({ quote: singleQuote });
+// });
+
+router.get("/getQuotes", async (req, res) => {
+  const shuffledArr = quoteJson.sort(() => 0.5 - Math.random()).slice(0, 6);
+  res.json(shuffledArr);
 });
 
 router.get("/checkQuote/:quote", async (req, res) => {

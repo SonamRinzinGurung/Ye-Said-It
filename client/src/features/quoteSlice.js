@@ -4,10 +4,10 @@ import axios from "axios";
 export const getQuote = createAsyncThunk("getQuote", async (arg, thunkAPI) => {
   try {
     const { data } = await axios(
-      "http://localhost:3000/api/v1/ye-said/getQuote"
+      "http://localhost:3000/api/v1/ye-said/getQuotes"
     );
 
-    return await data.quote;
+    return await data;
   } catch (error) {
     console.log(error);
     return thunkAPI.rejectWithValue("error ocurred...");
@@ -22,7 +22,6 @@ export const checkQuote = createAsyncThunk(
         `http://localhost:3000/api/v1/ye-said/checkQuote/${quote}`
       );
       const result = { answer: data.result, choice };
-      thunkAPI.dispatch(getQuote());
       setTimeout(() => thunkAPI.dispatch(clearMessage()), 2000);
       return result;
     } catch (error) {}
@@ -31,10 +30,23 @@ export const checkQuote = createAsyncThunk(
 
 const quoteSlice = createSlice({
   name: "quote",
-  initialState: { quote: "", isCorrect: null, score: 0, isLoading: false },
+  initialState: {
+    quotes: [],
+    isCorrect: null,
+    score: 0,
+    isLoading: false,
+    currentIndex: 0,
+    gameOver: false,
+  },
   reducers: {
     clearMessage: (state) => {
       state.isCorrect = null;
+    },
+    newGame: (state) => {
+      state.isCorrect = null;
+      state.score = 0;
+      state.isLoading = false;
+      state.currentIndex = 0;
     },
   },
   extraReducers: {
@@ -43,17 +55,17 @@ const quoteSlice = createSlice({
     },
     [getQuote.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.quote = action.payload;
+      state.quotes = action.payload;
     },
     [getQuote.rejected]: (state, action) => {
       state.isLoading = false;
       console.log(action.payload);
     },
     [checkQuote.pending]: (state) => {
-      state.isLoading = true;
+      // state.isLoading = true;
     },
     [checkQuote.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
+      // state.isLoading = false;
       if (payload.answer === payload.choice) {
         state.score = state.score + 1;
         state.isCorrect = true;
@@ -63,11 +75,12 @@ const quoteSlice = createSlice({
       } else {
         state.isCorrect = false;
       }
+      state.currentIndex = state.currentIndex + 1;
     },
 
     [checkQuote.rejected]: (state) => {},
   },
 });
 
-export const { clearMessage } = quoteSlice.actions;
+export const { clearMessage, newGame } = quoteSlice.actions;
 export default quoteSlice.reducer;
