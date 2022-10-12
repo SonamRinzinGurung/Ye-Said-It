@@ -3,9 +3,7 @@ import axios from "axios";
 
 export const getQuote = createAsyncThunk("getQuote", async (arg, thunkAPI) => {
   try {
-    const { data } = await axios(
-      "http://localhost:3000/api/v1/ye-said/getQuotes"
-    );
+    const { data } = await axios("/api/v1/ye-said/getQuotes");
 
     return await data;
   } catch (error) {
@@ -18,9 +16,7 @@ export const checkQuote = createAsyncThunk(
   "checkQuote",
   async ({ quote, choice }, thunkAPI) => {
     try {
-      const { data } = await axios(
-        `http://localhost:3000/api/v1/ye-said/checkQuote/${quote}`
-      );
+      const { data } = await axios(`/api/v1/ye-said/checkQuote/${quote}`);
       const result = { answer: data.result, choice };
       setTimeout(() => thunkAPI.dispatch(clearMessage()), 1000);
       return result;
