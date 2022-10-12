@@ -3,20 +3,19 @@ import { checkQuote } from "../features/quoteSlice";
 import { CorrectAnswer, WrongAnswer } from "./FeedBack";
 import trueIcon from "../assets/true.png";
 import falseIcon from "../assets/false.png";
-import Loading from "./Loading";
 
 const Quote = () => {
   const dispatch = useDispatch();
-  const { quotes, score, isCorrect, currentIndex, isLoading } = useSelector(
+  const { quotes, score, isCorrect, currentIndex } = useSelector(
     (store) => store.quote
   );
   const currentQuote = quotes[currentIndex];
   return (
-    <section className="flex flex-col gap-2 ">
+    <section className="flex flex-col gap-2">
       <div className="self-end p-2.5 bg-green-300 m-4 font-monospace rounded-lg shadow-sm w-40 text-xl lg:text-2xl lg:w-52 hover:bg-orange-400 hover:shadow-2xl duration-300 ease-in">
         Score: {score}
       </div>
-      <div className="flex flex-col backdrop-blur-sm max-w-sm m-auto p-5 py-6 my-4 shadow-lg rounded-md hover:shadow-2xl lg:my-2">
+      <div className="flex flex-col backdrop-blur-sm max-w-sm m-auto p-5 py-6 my-4 shadow-lg rounded-md hover:shadow-2xl duration-200 ease-in lg:my-2">
         <div className="flex flex-col">
           {isCorrect === null && (
             <>
@@ -26,13 +25,7 @@ const Quote = () => {
               <span className="font-monospace self-end text-2xl">-Ye</span>
             </>
           )}
-          {/* {isLoading ? (
-            <Loading />
-          ) : (
-            <p className="font-display text-2xl text-orange-400 my-5">
-              Did Ye say it ?
-            </p>
-          )} */}
+
           <p className="font-display text-2xl text-orange-400 my-5">
             Did Ye say it ?
           </p>

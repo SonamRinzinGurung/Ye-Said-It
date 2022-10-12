@@ -1,21 +1,10 @@
 import express from "express";
 
 const router = express.Router();
-import {
-  quoteJson,
-  fakeQuotesJson,
-  realQuoteJson,
-} from "../quotes/readQuote.js";
-
-// router.get("/getQuote", async (req, res) => {
-//   const singleQuote = await quoteJson[
-//     Math.floor(Math.random() * quoteJson.length)
-//   ];
-
-//   res.json({ quote: singleQuote });
-// });
+import { quoteJson, realQuoteJson } from "../quotes/readQuote.js";
 
 router.get("/getQuotes", async (req, res) => {
+  // get six random quotes from all the quotes
   const shuffledArr = quoteJson.sort(() => 0.5 - Math.random()).slice(0, 6);
   res.json(shuffledArr);
 });

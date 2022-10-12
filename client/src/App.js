@@ -3,12 +3,11 @@ import { getQuote } from "./features/quoteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Quote from "./components/Quote";
 import GameOver from "./components/GameOver";
-import Loading from "./components/Loading";
 import bearIcon from "./assets/bear-icon.png";
 
 function App() {
   const dispatch = useDispatch();
-  const { isLoading, currentIndex } = useSelector((store) => store.quote);
+  const { currentIndex } = useSelector((store) => store.quote);
   useEffect(() => {
     dispatch(getQuote());
   }, [dispatch]);
