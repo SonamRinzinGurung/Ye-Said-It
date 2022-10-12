@@ -19,7 +19,12 @@ const Quote = () => {
         <div className="flex flex-col">
           {isCorrect === null && (
             <>
-              <p className="font-display leading-8 text-green-300 text-3xl">
+              <p
+                className="font-display leading-7 text-green-300 max-w-lg"
+                style={{
+                  fontSize: "min(1.3rem,1.5rem)",
+                }}
+              >
                 " {currentQuote} "
               </p>
               <span className="font-monospace self-end text-2xl">-Ye</span>
