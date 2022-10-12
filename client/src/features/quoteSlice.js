@@ -22,7 +22,8 @@ export const checkQuote = createAsyncThunk(
         `http://localhost:3000/api/v1/ye-said/checkQuote/${quote}`
       );
       const result = { answer: data.result, choice };
-      setTimeout(() => thunkAPI.dispatch(clearMessage()), 2000);
+      setTimeout(() => thunkAPI.dispatch(stopLoading()), 500);
+      setTimeout(() => thunkAPI.dispatch(clearMessage()), 1500);
       return result;
     } catch (error) {}
   }
@@ -48,6 +49,9 @@ const quoteSlice = createSlice({
       state.isLoading = false;
       state.currentIndex = 0;
     },
+    stopLoading: (state) => {
+      state.isLoading = false;
+    },
   },
   extraReducers: {
     [getQuote.pending]: (state) => {
@@ -62,10 +66,9 @@ const quoteSlice = createSlice({
       console.log(action.payload);
     },
     [checkQuote.pending]: (state) => {
-      // state.isLoading = true;
+      state.isLoading = true;
     },
     [checkQuote.fulfilled]: (state, { payload }) => {
-      // state.isLoading = false;
       if (payload.answer === payload.choice) {
         state.score = state.score + 1;
         state.isCorrect = true;
@@ -82,5 +85,5 @@ const quoteSlice = createSlice({
   },
 });
 
-export const { clearMessage, newGame } = quoteSlice.actions;
+export const { clearMessage, newGame, stopLoading } = quoteSlice.actions;
 export default quoteSlice.reducer;
