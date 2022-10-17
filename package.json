@@ -5,6 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "start": "node app.js",
     "server": "nodemon app --ignore client",
