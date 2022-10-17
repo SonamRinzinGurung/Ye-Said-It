@@ -6,9 +6,10 @@
   "type": "module",
   "scripts": {
     "build": "cd client && npm run build",
+    "start": "node app.js",
     "server": "nodemon app --ignore client",
     "client": "npm start --prefix client",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
   },
   "keywords": [
     "Ye",
