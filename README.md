@@ -1,6 +1,6 @@
 # Ye Said It
 
-Check out the [Live Site](https://upset-cloak-crow.cyclic.app/)
+Check out the [Live Site](https://did-ye-say-it.onrender.com/)
 
 A simple game where you have to guess if the quote was said by Kanye West or not.
 
