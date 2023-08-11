@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import morgan from "morgan";
 import "express-async-error";
-
+import cors from "cors";
 //security
 import helmet from "helmet";
 import xss from "xss-clean";
@@ -25,6 +25,12 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use(express.json());
 app.use(helmet()); //secure headers
 app.use(xss()); //sanitize input , prevent cross site scripting
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/api/v1/ye-said", quoteRoute);
 

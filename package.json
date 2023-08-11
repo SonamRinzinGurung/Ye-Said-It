@@ -19,6 +19,7 @@
   "author": "Lova",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-async-error": "^0.0.2",

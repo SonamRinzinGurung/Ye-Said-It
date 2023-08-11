@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const getQuote = createAsyncThunk("getQuote", async (arg, thunkAPI) => {
   try {
-    const { data } = await axios("/api/v1/ye-said/getQuotes");
+    const { data } = await axios(
+      `${process.env.REACT_APP_API_URL}/api/v1/ye-said/getQuotes`
+    );
 
     return await data;
   } catch (error) {
@@ -66,8 +68,7 @@ const quoteSlice = createSlice({
       if (payload.answer === payload.choice) {
         state.score = state.score + 1;
         state.isCorrect = true;
-      } else if (payload.answer !== payload.choice && state.score >= 1) {
-        state.score = state.score - 1;
+      } else if (payload.answer !== payload.choice) {
         state.isCorrect = false;
       } else {
         state.isCorrect = false;
