@@ -4,7 +4,7 @@ import axios from "axios";
 export const getQuote = createAsyncThunk("getQuote", async (arg, thunkAPI) => {
   try {
     const { data } = await axios(
-      `${process.env.REACT_APP_API_URL}/api/v1/ye-said/getQuotes`
+      `${process.env.REACT_APP_API_URL || ""}/api/v1/ye-said/getQuotes`
     );
 
     return await data;
@@ -18,7 +18,11 @@ export const checkQuote = createAsyncThunk(
   "checkQuote",
   async ({ quote, choice }, thunkAPI) => {
     try {
-      const { data } = await axios(`/api/v1/ye-said/checkQuote/${quote}`);
+      const { data } = await axios(
+        `${
+          process.env.REACT_APP_API_URL || ""
+        }/api/v1/ye-said/checkQuote/${quote}`
+      );
       const result = { answer: data.result, choice };
       setTimeout(() => thunkAPI.dispatch(clearMessage()), 1000);
       return result;

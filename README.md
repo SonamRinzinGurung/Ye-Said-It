@@ -1,6 +1,6 @@
 # Ye Said It
 
-Check out the [Live Site](https://ye-said-it.cyclic.app/)
+Check out the [Live Site](https://upset-cloak-crow.cyclic.app/)
 
 A simple game where you have to guess if the quote was said by Kanye West or not.
 
@@ -9,7 +9,6 @@ A simple game where you have to guess if the quote was said by Kanye West or not
 - Node js with expressjs for backend
 - React with Redux Toolkit for frontend
 - Tailwind for CSS
-
 
 ### Site Screenshot
 
