@@ -2,14 +2,14 @@
 
 Check out the [Live Site](https://did-ye-say-it.onrender.com/)
 
-A simple game where you have to guess if the quote was said by Kanye West or not.
+A simple game where you have to guess if the quote was said by Kanye West (Ye) or not.
 
 ## Tools used
 
-- Node js with expressjs for backend
-- React with Redux Toolkit for frontend
-- Tailwind for CSS
+- Node js
+- React with Redux Toolkit
+- Tailwind
 
 ### Site Screenshot
 
-<img width="958" alt="image" src="https://user-images.githubusercontent.com/100353887/195640132-2645aa28-c69c-4a86-85d3-852434959be3.png">
+<img width="958" alt="image" src="https://private-user-images.githubusercontent.com/100353887/293841656-d0efc1e8-7ec0-4110-99bf-c23a6cd19bc0.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQyNjEyNzAsIm5iZiI6MTcwNDI2MDk3MCwicGF0aCI6Ii8xMDAzNTM4ODcvMjkzODQxNjU2LWQwZWZjMWU4LTdlYzAtNDExMC05OWJmLWMyM2E2Y2QxOWJjMC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMTAzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDEwM1QwNTQ5MzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wYzQ4MjY1MTdjMTZkY2JlYjNhZTY2MGE3OTBiMTg2YTg3OWVjZmUxNWEzMDMyMWVjNWZmYzFjMDBmNzU4ZGJjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.DxzhQeIDz6aJS0tHp03YnclBQCP7EJeNi7tg1y17Gm8">
