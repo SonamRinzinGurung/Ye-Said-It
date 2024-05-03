@@ -5,7 +5,7 @@ import gameover from "../assets/gameover.png";
 
 const GameOver = () => {
   const dispatch = useDispatch();
-  const { score } = useSelector((store) => store.quote);
+  const { score, isLoading } = useSelector((store) => store.quote);
   return (
     <div
       className="relative z-10"
@@ -36,6 +36,7 @@ const GameOver = () => {
             </div>
             <div className="bg-gray-50 px-4 py-3">
               <button
+                disabled={isLoading}
                 onClick={() => {
                   dispatch(getQuote());
                   dispatch(newGame());

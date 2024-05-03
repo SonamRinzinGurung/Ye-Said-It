@@ -2,7 +2,7 @@
 
 Check out the [Live Site](https://did-ye-say-it.onrender.com/)
 
-A simple game where you have to guess if the quote was said by Kanye West (Ye) or not.
+A simple game where you have to guess if the quote was said by Ye (Kanye West) or not.
 
 ## Tools used
 

@@ -6,16 +6,16 @@ import falseIcon from "../assets/false.png";
 
 const Quote = () => {
   const dispatch = useDispatch();
-  const { quotes, score, isCorrect, currentIndex } = useSelector(
+  const { quotes, score, isCorrect, currentIndex, isLoading } = useSelector(
     (store) => store.quote
   );
   const currentQuote = quotes[currentIndex];
   return (
     <section className="flex flex-col gap-2">
-      <div className="self-end p-2.5 bg-green-300 m-4 font-monospace rounded-lg shadow-sm w-40 text-xl lg:text-2xl lg:w-52 hover:bg-orange-400 hover:shadow-2xl duration-300 ease-in">
+      <div className="score self-end p-2.5 bg-green-300 m-4 font-monospace rounded-lg shadow-sm w-40 text-xl lg:text-2xl lg:w-52 hover:bg-orange-400 hover:shadow-2xl transition duration-300 ease-in">
         Score: {score}
       </div>
-      <div className="flex flex-col backdrop-blur-sm max-w-sm m-auto p-5 py-6 my-4 shadow-lg rounded-md hover:shadow-2xl duration-200 ease-in lg:my-2">
+      <div className="flex flex-col backdrop-blur-sm w-80 lg:w-96 h-96 m-auto p-5 py-6 my-4 shadow-lg rounded-md hover:shadow-2xl transition-shadow duration-200 ease-in">
         <div className="flex flex-col">
           {isCorrect === null && (
             <>
@@ -39,21 +39,23 @@ const Quote = () => {
         {isCorrect === null && (
           <div className="flex m-auto font-monospace text-xl">
             <button
+              disabled={isLoading}
               className="bg-green-400 bg-opacity-80 hover:bg-opacity-100 hover:shadow-lg text-white  w-2/3 p-2 mx-4 rounded-xl duration-300 ease-in-out"
               onClick={() => {
                 dispatch(checkQuote({ quote: currentQuote, choice: true }));
               }}
             >
-              <img src={trueIcon} alt="" />
+              <img src={trueIcon} alt="" /> {""}
               Ye Said It
             </button>
             <button
+              disabled={isLoading}
               className="duration-300 ease-in-out bg-orange-400 bg-opacity-80 hover:bg-opacity-100 hover:shadow-lg text-white w-2/3 p-2 mx-4 rounded-xl"
               onClick={() => {
                 dispatch(checkQuote({ quote: currentQuote, choice: false }));
               }}
             >
-              <img src={falseIcon} alt="" />
+              <img src={falseIcon} alt="" /> {""}
               Ye ain't say it
             </button>
           </div>

@@ -47,7 +47,6 @@ const quoteSlice = createSlice({
     newGame: (state) => {
       state.isCorrect = null;
       state.score = 0;
-      state.isLoading = false;
       state.currentIndex = 0;
     },
   },

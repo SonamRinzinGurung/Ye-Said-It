@@ -42,38 +42,35 @@ function App() {
   };
 
   return (
-    <div className={"dark"}>
+    <main className="font-serif text-center bg-[url('./assets/mountains.png')] bg-cover min-h-screen">
       <audio id="audio" loop>
         <source src={bound2} type="audio/mpeg" />
       </audio>
-
-      <main className="font-serif text-center bg-[url('./assets/mountains.png')] bg-cover  min-h-screen">
-        <nav className="flex justify-between backdrop-blur-sm bg-white/30">
-          <div className="flex justify-center flex-grow">
-            <img src={bearIcon} alt="" className="w-20 h-20 self-center" />
-            <h2
-              className="font-logo text-green-300 duration-300 ease-in hover:text-orange-400  cursor-pointer text-lg self-center"
-              title={isMusicPlaying ? `Pause 🎶` : `Play 🎶`}
-            >
-              Ye Said It?
-            </h2>
-          </div>
-          <div className="self-center ml-auto mr-4 hover:cursor-pointer duration-100 ease-in hover:scale-110">
-            {isMusicPlaying ? (
-              <button onClick={pauseAudio} className="w-6">
-                <img src={music_off} alt="music off" />
-              </button>
-            ) : (
-              <button onClick={playAudio} className="w-6">
-                <img src={music_on} alt="music off" />
-              </button>
-            )}
-          </div>
-        </nav>
-        {showGameOver && <GameOver />}
-        <Quote />
-      </main>
-    </div>
+      <nav className="flex justify-between backdrop-blur-sm bg-white/20">
+        <div className="flex justify-center flex-grow">
+          <img src={bearIcon} alt="" className="w-20 h-20 self-center" />
+          <h2
+            className="font-logo text-green-300 duration-300 ease-in hover:text-orange-400  cursor-pointer text-lg self-center"
+            title={isMusicPlaying ? `Pause 🎶` : `Play 🎶`}
+          >
+            Ye Said It ?
+          </h2>
+        </div>
+        <div className="self-center ml-auto mr-4 hover:cursor-pointer duration-100 ease-in hover:scale-110">
+          {isMusicPlaying ? (
+            <button onClick={pauseAudio} className="w-6">
+              <img src={music_on} alt="music off" />
+            </button>
+          ) : (
+            <button onClick={playAudio} className="w-6">
+              <img src={music_off} alt="music off" />
+            </button>
+          )}
+        </div>
+      </nav>
+      {showGameOver && <GameOver />}
+      <Quote />
+    </main>
   );
 }
 
