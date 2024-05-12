@@ -12,15 +12,15 @@ import xss from "xss-clean";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
-import quoteRoute from "./server/routes/quoteRouter.js";
-import notFound from "./server/error/notFoundError.js";
+import quoteRoute from "./routes/quoteRouter.js";
+import notFound from "./error/notFoundError.js";
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.use(express.json());
 app.use(helmet()); //secure headers
@@ -35,7 +35,7 @@ app.use(
 app.use("/api/v1/ye-said", quoteRoute);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 app.use(notFound);

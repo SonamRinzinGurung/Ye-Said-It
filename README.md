@@ -6,9 +6,10 @@ A simple game where you have to guess if the quote was said by Ye (Kanye West) o
 
 ## Tools used
 
-- Node js
-- React with Redux Toolkit
-- Tailwind
+- NodeJS
+- React
+- Redux Toolkit
+- Tailwind CSS
 
 ### Site Screenshot
 
