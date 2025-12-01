@@ -10,7 +10,7 @@ export const getQuote = createAsyncThunk("getQuote", async (arg, thunkAPI) => {
     return await data;
   } catch (error) {
     console.log(error);
-    return thunkAPI.rejectWithValue("error ocurred...");
+    return thunkAPI.rejectWithValue("error occurred...");
   }
 });
 
@@ -24,7 +24,7 @@ export const checkQuote = createAsyncThunk(
         }/api/v1/ye-said/checkQuote/${quote}`
       );
       const result = { answer: data.result, choice };
-      setTimeout(() => thunkAPI.dispatch(clearMessage()), 1000);
+      setTimeout(() => thunkAPI.dispatch(clearMessage()), 1500);
       return result;
     } catch (error) {}
   }
